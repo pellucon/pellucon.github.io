@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enterprise MCP Proxy — Coming Soon</title>
+<meta name="description" content="One secure, governed gateway between your AI agents and your MCP servers. Coming soon.">
+<meta property="og:title" content="Enterprise MCP Proxy — Coming Soon">
+<meta property="og:description" content="One secure, governed gateway between your AI agents and your MCP servers.">
+<meta property="og:type" content="website">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f5f6fb;
+    --text: #141627;
+    --muted: #555a74;
+    --border: #e3e5ef;
+    --card: #ffffff;
+    --indigo: #4f46e5;
+    --teal: #0d9488;
+    --accent-text: #4338ca;
+    --pill-bg: #ecfdf5;
+    --pill-text: #047857;
+    --shadow: 0 1px 2px rgba(20, 22, 39, .04), 0 8px 24px rgba(20, 22, 39, .06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c0e1a;
+      --bg-soft: #12152a;
+      --text: #eceef8;
+      --muted: #a3a8c3;
+      --border: #262a45;
+      --card: #151933;
+      --accent-text: #a5b4fc;
+      --pill-bg: #0f2e2a;
+      --pill-text: #5eead4;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Top bar */
+  header.top { border-bottom: 1px solid var(--border); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
+  .brand img { width: 32px; height: 32px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--pill-bg); color: var(--pill-text);
+    font-size: 13px; font-weight: 600; letter-spacing: .02em;
+    padding: 6px 12px; border-radius: 999px; white-space: nowrap;
+  }
+  .pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+
+  /* Hero */
+  .hero { padding: 88px 0 72px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -40% -10% auto; height: 120%;
+    background: radial-gradient(closest-side, rgba(79, 70, 229, .14), transparent),
+                radial-gradient(closest-side at 70% 60%, rgba(13, 148, 136, .12), transparent);
+    z-index: -1;
+  }
+  .hero img.logo { width: 96px; height: 96px; margin-bottom: 24px; filter: drop-shadow(0 12px 24px rgba(79, 70, 229, .25)); }
+  .hero h1 { font-size: clamp(34px, 5.4vw, 58px); line-height: 1.08; letter-spacing: -.025em; margin: 0 auto 20px; max-width: 860px; }
+  .grad { background: linear-gradient(90deg, var(--indigo), var(--teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.lead { font-size: clamp(18px, 2.2vw, 21px); color: var(--muted); max-width: 720px; margin: 0 auto 32px; }
+  .soon {
+    display: inline-block; max-width: 640px; text-align: left;
+    border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow);
+    border-radius: 14px; padding: 16px 20px; font-size: 15px; color: var(--muted);
+  }
+  .soon strong { color: var(--text); }
+
+  /* Sections */
+  section { padding: 72px 0; }
+  section.soft { background: var(--bg-soft); }
+  .eyebrow { color: var(--accent-text); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 10px; }
+  h2 { font-size: clamp(28px, 3.6vw, 38px); line-height: 1.15; letter-spacing: -.02em; margin: 0 0 16px; }
+  .section-intro { color: var(--muted); max-width: 680px; margin: 0 0 40px; font-size: 18px; }
+
+  /* Featured */
+  .feature { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+  .feature + .feature { margin-top: 88px; }
+  .feature.flip .copy { order: 2; }
+  .feature p { color: var(--muted); margin: 0 0 16px; }
+  .ticks { list-style: none; padding: 0; margin: 20px 0 0; }
+  .ticks li { position: relative; padding-left: 30px; margin: 10px 0; }
+  .ticks li::before {
+    content: ""; position: absolute; left: 0; top: 5px; width: 18px; height: 18px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--indigo), var(--teal));
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath fill-rule='evenodd' d='M9 0a9 9 0 110 18A9 9 0 019 0zm4.7 7.2a1 1 0 00-1.4-1.4L7.6 10.6 5.7 8.8a1 1 0 00-1.4 1.4l2.6 2.5a1 1 0 001.4 0z'/%3E%3C/svg%3E") center/contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath fill-rule='evenodd' d='M9 0a9 9 0 110 18A9 9 0 019 0zm4.7 7.2a1 1 0 00-1.4-1.4L7.6 10.6 5.7 8.8a1 1 0 00-1.4 1.4l2.6 2.5a1 1 0 001.4 0z'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+  .panel {
+    background: var(--card); border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow);
+    padding: 22px; font-size: 15px;
+  }
+  .panel .row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); margin: 10px 0; }
+  .panel .row:first-child { margin-top: 0; }
+  .panel .row:last-child { margin-bottom: 0; }
+  .who { font-weight: 700; font-size: 13px; color: var(--accent-text); min-width: 64px; }
+  .say { color: var(--text); }
+  .tag { margin-left: auto; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .tag.ok { background: var(--pill-bg); color: var(--pill-text); }
+  .tag.block { background: rgba(225, 29, 72, .12); color: #e11d48; }
+  .tag.alert { background: rgba(217, 119, 6, .14); color: #d97706; }
+  @media (prefers-color-scheme: dark) {
+    .tag.block { color: #fb7185; }
+    .tag.alert { color: #fbbf24; }
+  }
+
+  /* Capability grid */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow); }
+  .card h3 { font-size: 18px; margin: 14px 0 8px; letter-spacing: -.01em; }
+  .card p { color: var(--muted); margin: 0; font-size: 15.5px; }
+  .icon {
+    width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--indigo), var(--teal)); color: #fff;
+  }
+  .icon svg { width: 22px; height: 22px; }
+
+  /* Closing */
+  .closing { text-align: center; }
+  .closing .box {
+    border-radius: 24px; padding: 56px 32px; color: #fff;
+    background: linear-gradient(135deg, var(--indigo), var(--teal));
+    box-shadow: 0 20px 40px rgba(79, 70, 229, .25);
+  }
+  .closing h2 { color: #fff; }
+  .closing p { margin: 0 auto; max-width: 600px; opacity: .92; font-size: 18px; }
+
+  footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  @media (max-width: 860px) {
+    .feature { grid-template-columns: 1fr; gap: 28px; }
+    .feature.flip .copy { order: 0; }
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    .hero { padding: 56px 0 48px; }
+    section { padding: 56px 0; }
+    .grid { grid-template-columns: 1fr; }
+    .panel .row { flex-wrap: wrap; row-gap: 6px; }
+    .brand { font-size: 16px; white-space: nowrap; }
+    .brand img { width: 28px; height: 28px; }
+    .closing .box { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="logo.svg" alt="">Enterprise MCP Proxy</a>
+    <span class="pill">Coming soon</span>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <img class="logo" src="logo.svg" alt="Enterprise MCP Proxy logo">
+      <h1>One secure gateway between your <span class="grad">AI agents</span> and your MCP servers</h1>
+      <p class="lead">Enterprise MCP Proxy brings all of your MCP servers together behind a single endpoint, and adds the security, governance and visibility your organization needs to put AI agents to work.</p>
+      <div class="soon"><strong>Coming soon.</strong> Enterprise MCP Proxy isn't publicly available yet. The software and its documentation will be published when it launches.</div>
+    </div>
+  </section>
+
+  <section class="soft" id="agents">
+    <div class="wrap">
+      <div class="feature">
+        <div class="copy">
+          <p class="eyebrow">Built for AI agents</p>
+          <h2>A gateway your agents can operate</h2>
+          <p>Most gateways are managed through a console built for people. Enterprise MCP Proxy exposes its own control plane as MCP tools, so an authorized agent can operate the gateway the same way it uses any other tool.</p>
+          <ul class="ticks">
+            <li>Review and update access rules, guardrails and discovery settings through ordinary tool calls</li>
+            <li>Changes take effect live, with no restart or redeployment</li>
+            <li>Every administrative action stays under role-based control</li>
+          </ul>
+        </div>
+        <div class="panel" aria-hidden="true">
+          <div class="row"><span class="who">Agent</span><span class="say">“Show me the current access rules.”</span><span class="tag ok">MCP tool</span></div>
+          <div class="row"><span class="who">Agent</span><span class="say">“Let the support role use the order tools.”</span><span class="tag ok">MCP tool</span></div>
+          <div class="row"><span class="who">Gateway</span><span class="say">Rules updated. Live for every client.</span><span class="tag ok">Applied</span></div>
+        </div>
+      </div>
+
+      <div class="feature flip" id="guardrails">
+        <div class="copy">
+          <p class="eyebrow">Declarative guardrails and constraints</p>
+          <h2>Policy you declare, not code you write</h2>
+          <p>Describe what's allowed, for whom and when. The gateway checks every tool call before it reaches a server, and every result before it reaches the agent.</p>
+          <ul class="ticks">
+            <li>Rules scoped by role, with optional date and time windows</li>
+            <li>Constraints on both requests and results</li>
+            <li>Choose the response: block, alert or log</li>
+            <li>Adjust policy on the fly, without redeploying anything</li>
+          </ul>
+        </div>
+        <div class="panel" aria-hidden="true">
+          <div class="row"><span class="who">Request</span><span class="say">Refund of $40 by a support agent</span><span class="tag ok">Allowed</span></div>
+          <div class="row"><span class="who">Request</span><span class="say">Refund of $4,000 by a support agent</span><span class="tag block">Blocked</span></div>
+          <div class="row"><span class="who">Result</span><span class="say">Customer record with unexpected fields</span><span class="tag alert">Alert</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities">
+    <div class="wrap">
+      <p class="eyebrow">Everything an enterprise needs</p>
+      <h2>Built for production from day one</h2>
+      <p class="section-intro">The services your security, platform and operations teams expect, in one gateway.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>Dynamic discovery</h3>
+          <p>New MCP servers are found and connected automatically, and retired ones are removed. No configuration change, no restart.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Layered, role-based security</h3>
+          <p>Sign in with your existing identity provider. Each role sees and calls only the tools, prompts and resources it's allowed to.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+          <h3>Audit and observability</h3>
+          <p>Events, alerts and end-to-end traceability for every tool call, so you always know who did what, and when.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
+          <h3>AI-powered tools</h3>
+          <p>Built-in AI assistance helps agents find the right tool for a task across all of your servers.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+          <h3>Scalability and rate limiting</h3>
+          <p>Scale out on Kubernetes and keep usage fair and costs predictable with rate limits.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></div>
+          <h3>Live, dynamic configuration</h3>
+          <p>Update access rules, guardrails and more while the gateway runs. Changes apply everywhere at once.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></svg></div>
+          <h3>Modular and extensible</h3>
+          <p>Add or customize platform services as plug-in MCP servers to fit the gateway to your organization.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8.7 5v10L12 22l-8.7-5V7z"/><path d="M12 22V12M20.7 7L12 12 3.3 7"/></svg></div>
+          <h3>Kubernetes-native</h3>
+          <p>Deploys to your Kubernetes cluster, with enterprise ingress, HTTPS and single sign-on support.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-2-7-5.5-7-10a7 7 0 0114 0c0 4.5-3 8-7 10z"/><path d="M12 21V11M12 14l3-3M12 16l-3-3"/></svg></div>
+          <h3>Complete demo application</h3>
+          <p>The Gardening Online Store demo shows every capability working end to end, with realistic data and roles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <div class="box">
+        <h2>Coming soon</h2>
+        <p>Enterprise MCP Proxy is getting ready for its public release. The software and documentation will be published here when it launches.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Enterprise MCP Proxy</span>
+    <span>Not yet available. Coming soon.</span>
+  </div>
+</footer>
+
+</body>
+</html>
