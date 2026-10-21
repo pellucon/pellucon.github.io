@@ -188,9 +188,10 @@
         <div class="copy">
           <p class="eyebrow">Built for AI agents</p>
           <h2>A gateway your agents can operate</h2>
-          <p>Most gateways are managed through a console built for people. Enterprise MCP Proxy exposes its own control plane as MCP tools, so an authorized agent can operate the gateway the same way it uses any other tool.</p>
+          <p>Most gateways are managed through a console built for people. In Enterprise MCP Proxy, every part of the platform is itself an MCP tool, so an authorized agent can operate and monitor the gateway the same way it uses any other tool.</p>
           <ul class="ticks">
             <li>Review and update access rules, guardrails and discovery settings through ordinary tool calls</li>
+            <li>Query events, alerts and usage statistics the same way</li>
             <li>Changes take effect live, with no restart or redeployment</li>
             <li>Every administrative action stays under role-based control</li>
           </ul>
@@ -218,6 +219,25 @@
           <div class="row"><span class="who">Request</span><span class="say">Refund of $40 by a support agent</span><span class="tag ok">Allowed</span></div>
           <div class="row"><span class="who">Request</span><span class="say">Refund of $4,000 by a support agent</span><span class="tag block">Blocked</span></div>
           <div class="row"><span class="who">Result</span><span class="say">Customer record with unexpected fields</span><span class="tag alert">Alert</span></div>
+        </div>
+      </div>
+
+      <div class="feature" id="modular">
+        <div class="copy">
+          <p class="eyebrow">Modular by design</p>
+          <h2>Services you plug in, not features you wait for</h2>
+          <p>The gateway's services aren't hard-coded features. Guardrails, event logging, rate limiting and AI assistance each run as an independent MCP server next to the gateway, discovered and called like any other.</p>
+          <ul class="ticks">
+            <li>Replace, scale or extend each service independently</li>
+            <li>Add a new service by deploying another MCP server, with no change to the gateway</li>
+            <li>Let any server, including your own, contribute checks that run around every tool call</li>
+          </ul>
+        </div>
+        <div class="panel" aria-hidden="true">
+          <div class="row"><span class="who">Service</span><span class="say">Declarative guardrails</span><span class="tag ok">MCP server</span></div>
+          <div class="row"><span class="who">Service</span><span class="say">Event log and alerts</span><span class="tag ok">MCP server</span></div>
+          <div class="row"><span class="who">Service</span><span class="say">Rate limiting</span><span class="tag ok">MCP server</span></div>
+          <div class="row"><span class="who">Yours</span><span class="say">Your own service</span><span class="tag alert">Plug in</span></div>
         </div>
       </div>
     </div>
@@ -261,9 +281,9 @@
           <p>Update access rules, guardrails and more while the gateway runs. Changes apply everywhere at once.</p>
         </div>
         <div class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></svg></div>
-          <h3>Modular and extensible</h3>
-          <p>Add or customize platform services as plug-in MCP servers to fit the gateway to your organization.</p>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg></div>
+          <h3>One endpoint for every client</h3>
+          <p>All your MCP servers behind a single, governed address. Clients connect once and see exactly the tools they're allowed to use.</p>
         </div>
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8.7 5v10L12 22l-8.7-5V7z"/><path d="M12 22V12M20.7 7L12 12 3.3 7"/></svg></div>
