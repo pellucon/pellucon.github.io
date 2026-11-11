@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Enterprise MCP Proxy — Coming Soon</title>
-<meta name="description" content="One secure, governed gateway between your AI agents and your MCP servers. Coming soon.">
-<meta property="og:title" content="Enterprise MCP Proxy — Coming Soon">
+<title>Enterprise MCP Proxy</title>
+<meta name="description" content="One secure, governed gateway between your AI agents and your MCP servers. Open source on GitHub.">
+<meta property="og:title" content="Enterprise MCP Proxy">
 <meta property="og:description" content="One secure, governed gateway between your AI agents and your MCP servers.">
 <meta property="og:type" content="website">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -63,6 +63,8 @@
     padding: 6px 12px; border-radius: 999px; white-space: nowrap;
   }
   .pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  a.pill { text-decoration: none; }
+  a.pill:hover { filter: brightness(.96); }
 
   /* Hero */
   .hero { padding: 88px 0 72px; text-align: center; position: relative; overflow: hidden; }
@@ -76,12 +78,15 @@
   .hero h1 { font-size: clamp(34px, 5.4vw, 58px); line-height: 1.08; letter-spacing: -.025em; margin: 0 auto 20px; max-width: 860px; }
   .grad { background: linear-gradient(90deg, var(--indigo), var(--teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .hero p.lead { font-size: clamp(18px, 2.2vw, 21px); color: var(--muted); max-width: 720px; margin: 0 auto 32px; }
-  .soon {
-    display: inline-block; max-width: 640px; text-align: left;
-    border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow);
-    border-radius: 14px; padding: 16px 20px; font-size: 15px; color: var(--muted);
+  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 12px 22px; border-radius: 12px; font-weight: 600; font-size: 16px;
+    text-decoration: none; transition: transform .15s ease, box-shadow .15s ease;
   }
-  .soon strong { color: var(--text); }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.primary { background: linear-gradient(90deg, var(--indigo), var(--teal)); color: #fff; box-shadow: 0 8px 20px rgba(79, 70, 229, .25); }
+  .btn.secondary { border: 1px solid var(--border); background: var(--card); color: var(--text); box-shadow: var(--shadow); }
 
   /* Sections */
   section { padding: 72px 0; }
@@ -141,9 +146,11 @@
   }
   .closing h2 { color: #fff; }
   .closing p { margin: 0 auto; max-width: 600px; opacity: .92; font-size: 18px; }
+  .closing .btn.light { margin-top: 28px; background: #fff; color: #3730a3; }
 
   footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 14px; }
   footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer a { color: inherit; }
 
   @media (max-width: 860px) {
     .feature { grid-template-columns: 1fr; gap: 28px; }
@@ -160,6 +167,8 @@
     .brand { font-size: 16px; white-space: nowrap; }
     .brand img { width: 28px; height: 28px; }
     .closing .box { padding: 40px 20px; }
+    .pill .long { display: none; }
+    .closing .btn.light { font-size: 14px; padding: 12px 16px; overflow-wrap: anywhere; }
   }
 </style>
 </head>
@@ -168,7 +177,7 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#"><img src="logo.svg" alt="">Enterprise MCP Proxy</a>
-    <span class="pill">Coming soon</span>
+    <a class="pill" href="https://github.com/pellucon/enterprise-go-mcp-proxy"><span><span class="long">Open source on </span>GitHub</span></a>
   </div>
 </header>
 
@@ -178,7 +187,10 @@
       <img class="logo" src="logo.svg" alt="Enterprise MCP Proxy logo">
       <h1>One secure gateway between your <span class="grad">AI agents</span> and your MCP servers</h1>
       <p class="lead">Enterprise MCP Proxy brings all of your MCP servers together behind a single endpoint, and adds the security, governance and visibility your organization needs to put AI agents to work.</p>
-      <div class="soon"><strong>Coming soon.</strong> Enterprise MCP Proxy isn't publicly available yet. The software and its documentation will be published when it launches.</div>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/pellucon/enterprise-go-mcp-proxy">Get it on GitHub</a>
+        <a class="btn secondary" href="https://github.com/pellucon/enterprise-go-mcp-proxy#quick-start">Quick Start</a>
+      </div>
     </div>
   </section>
 
@@ -302,8 +314,9 @@
   <section class="closing">
     <div class="wrap">
       <div class="box">
-        <h2>Coming soon</h2>
-        <p>Enterprise MCP Proxy is getting ready for its public release. The software and documentation will be published here when it launches.</p>
+        <h2>Get started</h2>
+        <p>Enterprise MCP Proxy is open source under the MIT license. Clone the source, read the documentation, or deploy a release with the full demo on a local Kubernetes cluster.</p>
+        <a class="btn light" href="https://github.com/pellucon/enterprise-go-mcp-proxy">github.com/pellucon/enterprise-go-mcp-proxy</a>
       </div>
     </div>
   </section>
@@ -312,7 +325,7 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Enterprise MCP Proxy</span>
-    <span>Not yet available. Coming soon.</span>
+    <span>MIT licensed · <a href="https://github.com/pellucon/enterprise-go-mcp-proxy">Source on GitHub</a></span>
   </div>
 </footer>
 
